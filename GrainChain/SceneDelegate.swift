@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = HomeRouter().viewController
         let navController = UINavigationController(rootViewController: viewController)
         
+        navController.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         window?.windowScene = windowsScene

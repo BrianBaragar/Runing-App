@@ -28,9 +28,8 @@ class DetailViewModel {
     }
     
     func deleteRoute(){
-        print(routeId)
         database?.delete(routeId: routeId)
-        view?.dismiss(animated: true, completion: nil)
+        notificationToken?.invalidate()
     }
     
     func getData(){
@@ -45,6 +44,9 @@ class DetailViewModel {
                 })
                 break
             case .update(_, let deletions, _,_):
+                deletions.forEach { (index) in
+                    print("Dato borrado")
+                }
                 break
             case .error(_):
                 print("Error en base de datos")

@@ -15,7 +15,6 @@ class HomeViewModel {
     private weak var view: HomeView?
     private var router: HomeRouter?
     var database: Database?
-    var routes: [Route] = []
     var notificationtToken: NotificationToken? = nil
     
     func bind(view: HomeView, router: HomeRouter){
@@ -40,19 +39,21 @@ class HomeViewModel {
     
     func getDistance(initialLocation: (lat: Double, lon: Double), endLocation: (lat: Double, lon: Double)) -> Double? {
         let initial = CLLocation(latitude: initialLocation.lat, longitude: initialLocation.lon)
-        print(initialLocation)
         let final = CLLocation(latitude: endLocation.lat, longitude: endLocation.lon)
-        print(endLocation)
         let distance = final.distance(from: initial) / 1000
         return distance
     }
     
-    init() {
-        database = Database.singleton
-        update()
+    func deleteRoute(routeId: Int){
+        database?.delete(routeId: routeId)
     }
     
-    func update(){
+    init() {
+        database = Database.singleton
+        connectToDataBase()
+    }
+    
+    func connectToDataBase(){
         let itemRoutes = database?.fetch()
         notificationtToken = itemRoutes?.observe({ [weak self] (changes: RealmCollectionChange) in
             switch(changes){
@@ -68,7 +69,6 @@ class HomeViewModel {
                     self!.view?.getData(route: routeItemsEntity)
                 }
                 deletions.forEach { (Index) in
-                    print(deletions)
                     let routeItemsEntity = itemRoutes![Index]
                     self!.view?.getData(route: routeItemsEntity)
                 }

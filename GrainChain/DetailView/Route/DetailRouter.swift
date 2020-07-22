@@ -29,7 +29,4 @@ class DetailRouter {
         return view
     }
     
-    func navigateToHomeView(){
-        sourceView?.dismiss(animated: true, completion: nil)
-    }
 }

@@ -45,6 +45,7 @@ class DetailView: UIViewController {
         viewModel.deleteRoute()
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
     @objc func share(){
         let activityController = UIActivityViewController(activityItems: ["En mi ruta :",routeObject.name, "Distancia :", routeObject.distance, "Tiempo :", routeObject.time], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)

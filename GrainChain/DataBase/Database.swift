@@ -51,10 +51,8 @@ class Database {
     
     func delete(routeId: Int){
         let realm = try! Realm()
-        print(routeId)
         if let routeEntity = realm.object(ofType: Route.self, forPrimaryKey: routeId){
             try! realm.write{
-                print(routeEntity)
                 realm.delete(routeEntity)
             }
         }

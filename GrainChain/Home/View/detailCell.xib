@@ -17,27 +17,38 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gS3-Jp-wVU">
-                        <rect key="frame" x="21" y="11.5" width="227" height="21"/>
+                        <rect key="frame" x="21" y="11.5" width="227" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="227" id="H8c-Kw-Huc"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfR-eg-tlb">
-                        <rect key="frame" x="251" y="12" width="27.5" height="20"/>
+                        <rect key="frame" x="251" y="14" width="27.5" height="18"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="run" translatesAutoresizingMaskIntoConstraints="NO" id="pqt-I7-G51">
+                        <rect key="frame" x="16" y="2" width="64" height="42"/>
+                        <color key="tintColor" red="0.03078400157" green="0.45492988820000002" blue="0.4940516949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="42" id="Rxz-Fq-VwA"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
-                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="pqt-I7-G51" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="7XZ-vI-XWk"/>
                     <constraint firstItem="gS3-Jp-wVU" firstAttribute="baseline" secondItem="GfR-eg-tlb" secondAttribute="firstBaseline" id="GMM-fV-qtN"/>
                     <constraint firstItem="gS3-Jp-wVU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Owa-Rr-r4o"/>
                     <constraint firstItem="GfR-eg-tlb" firstAttribute="leading" secondItem="gS3-Jp-wVU" secondAttribute="trailing" constant="3" id="UYd-NM-LgH"/>
+                    <constraint firstItem="pqt-I7-G51" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Vfc-SK-5d5"/>
+                    <constraint firstItem="pqt-I7-G51" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VtE-Jp-i8K"/>
                     <constraint firstItem="gS3-Jp-wVU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fj7-Hv-TrA"/>
+                    <constraint firstAttribute="bottom" secondItem="pqt-I7-G51" secondAttribute="bottom" constant="2" id="mGm-bG-Zz7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gS3-Jp-wVU" secondAttribute="bottom" constant="0.5" id="myl-Dl-D68"/>
                     <constraint firstItem="gS3-Jp-wVU" firstAttribute="centerY" secondItem="GfR-eg-tlb" secondAttribute="centerY" id="qDN-7K-McZ"/>
                 </constraints>
@@ -50,4 +61,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="run" width="64" height="64"/>
+    </resources>
 </document>
