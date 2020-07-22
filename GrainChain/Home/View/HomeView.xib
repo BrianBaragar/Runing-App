@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeView" customModule="GrainChain" customModuleProvider="target">
+            <connections>
+                <outlet property="mapViewHome" destination="fCl-31-fMa" id="sv5-9g-keC"/>
+                <outlet property="tableView" destination="ET7-Wc-Aok" id="Lpw-gB-LGz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCl-31-fMa" userLabel="MapView" customClass="GMSMapView">
+                    <rect key="frame" x="0.0" y="44" width="375" height="453"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ET7-Wc-Aok">
+                    <rect key="frame" x="0.0" y="497" width="375" height="315"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="315" id="yz6-Ho-c3M"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="oPP-Op-ISi"/>
+                        <outlet property="delegate" destination="-1" id="4jm-X6-FEs"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ET7-Wc-Aok" secondAttribute="bottom" id="3xI-GA-ZCg"/>
+                <constraint firstItem="ET7-Wc-Aok" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="HoN-x7-Cbe"/>
+                <constraint firstItem="ET7-Wc-Aok" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="J1m-dU-dFS"/>
+                <constraint firstItem="fCl-31-fMa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZMM-xJ-q9D"/>
+                <constraint firstItem="fCl-31-fMa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gAd-uh-LbH"/>
+                <constraint firstItem="fCl-31-fMa" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rCB-qv-jHg"/>
+                <constraint firstItem="ET7-Wc-Aok" firstAttribute="top" secondItem="fCl-31-fMa" secondAttribute="bottom" id="tNG-of-X5H"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="128.57142857142856"/>
+        </view>
+    </objects>
+</document>
