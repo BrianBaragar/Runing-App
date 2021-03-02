@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import RealmSwift
 import RxSwift
+import RxCocoa
 
 class HomeView: UIViewController {
     @IBOutlet weak var mapViewHome: GMSMapView!
@@ -41,17 +42,25 @@ class HomeView: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        routes = []
-        viewModel.connectToDataBase()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         setupUI()
+        getListRoutes()
     }
     
-    func getData(route : Route){
-        self.routes.append(route)
-        reloadTableView()
+    private func getListRoutes(){
+        return viewModel.connectToDataBase()
+            .subscribeOn(MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { routes in
+                    self.routes = routes
+                    self.reloadTableView()
+            }, onError: { error in
+                print(error)
+            }, onCompleted: {
+            }).disposed(by: disposeBag)
     }
     
     private func reloadTableView(){
@@ -67,8 +76,8 @@ class HomeView: UIViewController {
     }
     
     private func setupUI(){
-        self.navigationItem.title = "Grain Chain Test Developer"
-        markButton.frame = CGRect(x: self.view.center.x - 40, y: self.view.center.y + 40, width: 80, height: 30)
+        self.navigationItem.title = "Running App "
+        markButton.frame = CGRect(x: self.mapViewHome.center.x - 40, y: self.mapViewHome.center.y + 90, width: 80, height: 30)
         markButton.backgroundColor = #colorLiteral(red: 0.03078400157, green: 0.4549298882, blue: 0.4940516949, alpha: 1)
         markButton.setTitle("Inicio", for: .normal)
         markButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
@@ -129,7 +138,6 @@ class HomeView: UIViewController {
                 self.counter = 0.0
             }
         }))
-
         self.present(alert, animated: true)
     }
 }
@@ -169,6 +177,7 @@ extension HomeView: CLLocationManagerDelegate{
 
 //MARK: - Table View
 extension HomeView: UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return routes.count
     }
@@ -185,6 +194,7 @@ extension HomeView: UITableViewDataSource, UITableViewDelegate{
         headerView.addSubview(label)
         return headerView
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         50
     }

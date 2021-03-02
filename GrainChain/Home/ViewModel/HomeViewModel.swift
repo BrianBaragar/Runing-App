@@ -50,35 +50,23 @@ class HomeViewModel {
     
     init() {
         database = Database.singleton
-        connectToDataBase()
     }
     
-    func connectToDataBase(){
+    func connectToDataBase() -> Observable<[Route]>{
         let itemRoutes = database?.fetch()
-        notificationtToken = itemRoutes?.observe({ [weak self] (changes: RealmCollectionChange) in
-            switch(changes){
-            case .initial:
+        return Observable.create{ observer in
+            self.notificationtToken = itemRoutes?.observe({ [weak self] (changes: RealmCollectionChange) in
+                var routesList = [Route]()
                 itemRoutes?.forEach({ (itemRouteIdentity) in
-                    let itemRouteIdentity = itemRouteIdentity
-                    self!.view?.getData(route: itemRouteIdentity)
+                    routesList.append(itemRouteIdentity)
                 })
-                break
-            case .update(_, _, let insertions, let deletions):
-                insertions.forEach { (Index) in
-                    let routeItemsEntity = itemRoutes![Index]
-                    self!.view?.getData(route: routeItemsEntity)
-                }
-                deletions.forEach { (Index) in
-                    let routeItemsEntity = itemRoutes![Index]
-                    self!.view?.getData(route: routeItemsEntity)
-                }
-                break
-            case .error( _):
-                print("Error en base de datos")
-                break
-           }
-        })
+                observer.onNext(routesList)
+            })
+            //observer.onCompleted()
+            return Disposables.create()
+        }
     }
+    
     
     func makeDetailView(routeId: Int){
         router?.navigateToDetailView(routeId: routeId)
