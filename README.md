@@ -1,4 +1,4 @@
-# RuningGrainChainTestDev
+# Runing App
 Descargar el proyecto 
 Abrir una terminal en la carpeta 
 Ejecutar en la terminal pod install 
