@@ -1,13 +1,11 @@
-# Runing App
-Descargar el proyecto 
-Abrir una terminal en la carpeta 
-Ejecutar en la terminal pod install 
-Abrir el workspace
-Añadir tu perfil de desarrollo
-Compilar el proyecto
-Correr el proyecto en un dispositivo 
+# Runing App 🏃🏻
+Aplicacion que mide tu distancia de un punto A a punto B.
+Almacena todas tus rutas, muestra detalles de ella tal como distancia, tiempo, promedio, permite compartir en redes sociales tus resultados.
 
-Nota: Se tiene uso de RxSwift así que es necesario instalar los pods.
-╔╗╔╗╔╗╔╗╦╔╗╔╗
-║╗╠╝╠║║─║╠║╚╗
-╚╝╩╚╩╩╚╝╩╩╩╚╝
+Patron 🔗
+MVVM 
+Frameworks Utilizados 🧩
+Google Maps
+Realm Database 
+Rx Swift 
+Rx Cocoa 
